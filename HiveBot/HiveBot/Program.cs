@@ -4,6 +4,7 @@ using HiveBot.Commands;
 using HiveBot.Configuration;
 using HiveBot.Responders;
 using HiveBot.Services;
+using HiveBot.Services.AgeOfEmpires;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -75,8 +76,8 @@ namespace HiveBot
                 });
                 
                 // Add services
-                services
-                    .AddSingleton<UserChannelResolverService>();
+                services.AddSingleton<UserChannelResolverService>();
+                services.AddHttpClient<AgeOfEmpiresService>();
                 
                 // Add Discord commands
                 services
@@ -84,7 +85,8 @@ namespace HiveBot
                     .AddResponder<SlashCommandConfigurator>()
                     .AddResponder<ChannelPresenceTracker>()
                     .AddCommandGroup<SessionCommands>()
-                    .AddCommandGroup<MetaCommands>();
+                    .AddCommandGroup<MetaCommands>()
+                    .AddCommandGroup<AgeOfEmpiresCommands>();
             })
             .UseSerilog();
     }
