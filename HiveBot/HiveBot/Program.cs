@@ -60,7 +60,7 @@ namespace HiveBot
                 var config = new ConfigurationBuilder()
                     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: false)
                     .AddCommandLine(args)
-                    .AddUserSecrets<Program>()
+                    .AddUserSecrets<Program>(true)
                     .Build();
                 services.AddSingleton<IConfiguration>(config);
 
@@ -74,11 +74,11 @@ namespace HiveBot
                 {
                     options.Intents |= GatewayIntents.GuildVoiceStates;
                 });
-                
+
                 // Add services
                 services.AddSingleton<UserChannelResolverService>();
                 services.AddHttpClient<AgeOfEmpiresService>();
-                
+
                 // Add Discord commands
                 services
                     .AddDiscordCommands(true)
