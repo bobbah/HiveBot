@@ -350,7 +350,7 @@ MigrationBackup/
 .ionide/
 
 # Crude stoppage of accidental token commit.
-.HiveBot/HiveBot/appsettings.json
+HiveBot/HiveBot/appsettings.json
 
 .idea/
 
