@@ -349,9 +349,7 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 
-# Crude stoppage of accidental token commit.
-HiveBot/HiveBot/appsettings.json
-
+# Idea
 .idea/
 
 
