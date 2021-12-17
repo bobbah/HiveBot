@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Remora.Commands.Attributes;
 using Remora.Commands.Groups;
 using Remora.Discord.API.Abstractions.Rest;
+using Remora.Discord.API.Gateway.Events;
 using Remora.Discord.API.Objects;
 using Remora.Discord.Commands.Contexts;
 using Remora.Discord.Commands.Feedback.Services;
@@ -24,6 +25,17 @@ namespace HiveBot.Commands
             _context = context;
         }
 
+        [Command("ping")]
+        [Description("Pong.")]
+        public async Task<IResult> Ping()
+        {
+            return await _feedback.SendContextualEmbedAsync(new Embed(
+                Description: $"Pong!",
+                Colour: _feedback.Theme.Primary,
+                Timestamp: DateTimeOffset.UtcNow,
+                Footer: new EmbedFooter(VersionUtility.Version)));
+        }
+        
         [Command("invite")]
         [Description("Generate an invite for your server")]
         public async Task<IResult> CreateInvite()
